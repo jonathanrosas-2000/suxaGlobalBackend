@@ -11,10 +11,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "activities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::actividad.actividad"
+    "days": {
+      "type": "component",
+      "component": "travel.itinerary-day",
+      "repeatable": true,
+      "required": true,
+      "min": 1
     }
   }
 }

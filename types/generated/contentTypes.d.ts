@@ -389,10 +389,24 @@ export interface ApiActividadActividad extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    city: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    country: Schema.Attribute.Relation<'oneToOne', 'api::country.country'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Includes: Schema.Attribute.Component<'includes.includes', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -409,10 +423,31 @@ export interface ApiActividadActividad extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::actividad.actividad'
     >;
+    not_includes: Schema.Attribute.Component<
+      'not-includes.not-includes',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    old_price: Schema.Attribute.Decimal &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     photo: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Schema.Attribute.Decimal &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -484,13 +519,17 @@ export interface ApiItineraryItinerary extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    activities: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::actividad.actividad'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    days: Schema.Attribute.Component<'travel.itinerary-day', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

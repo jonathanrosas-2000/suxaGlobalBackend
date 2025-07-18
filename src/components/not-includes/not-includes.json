@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_not_includes_not_includes",
+  "info": {
+    "displayName": "not_includes",
+    "icon": "fileError"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

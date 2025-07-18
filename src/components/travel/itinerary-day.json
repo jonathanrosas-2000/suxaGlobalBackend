@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_travel_itinerary_days",
+  "info": {
+    "displayName": "Itinerary_day",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "day_number": {
+      "type": "integer",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "includes": {
+      "type": "component",
+      "component": "includes.includes",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
